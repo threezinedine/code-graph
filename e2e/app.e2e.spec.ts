@@ -16,7 +16,7 @@ test("shows the main app window", async () => {
 		await window.waitForLoadState("domcontentloaded");
 		await expect(
 			window.getByRole("heading", {
-				name: /Electron \+ React \+ TypeScript/i,
+				name: /Editor/i,
 			}),
 		).toBeVisible({ timeout: 15_000 });
 	} finally {

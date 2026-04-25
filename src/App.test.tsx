@@ -4,11 +4,11 @@ import { describe } from "node:test";
 import { expect, it } from "vitest";
 
 describe("App", () => {
-	it("renders the starter heading", () => {
+	it("renders the editor pane heading", () => {
 		render(<App />);
 		expect(
 			screen.getByRole("heading", {
-				name: /Electron \+ React \+ TypeScript/i,
+				name: /Editor/i,
 			}),
 		).toBeInTheDocument();
 	});
