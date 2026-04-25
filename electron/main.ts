@@ -15,6 +15,8 @@ function createMainWindow(): BrowserWindow {
 		},
 	});
 
+	mainWindow.maximize();
+
 	if (isDev) {
 		mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL as string);
 		mainWindow.webContents.openDevTools({ mode: "detach" });
