@@ -3,5 +3,8 @@
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
+	"chat.tools.terminal.autoApprove": {
+		"npm.cmd": true
+	}
 }
