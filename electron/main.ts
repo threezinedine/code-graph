@@ -15,8 +15,8 @@ function createMainWindow(
 	baseSettings: AppData,
 ): BrowserWindow {
 	const mainWindow = new BrowserWindow({
-		width: 1200,
-		height: 800,
+		width: initialSettings.defaultWindowWidth,
+		height: initialSettings.defaultWindowHeight,
 		frame: false,
 		autoHideMenuBar: true,
 		webPreferences: {

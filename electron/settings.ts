@@ -4,10 +4,14 @@ import { app } from "electron";
 
 export type AppSettings = {
 	isMaximizedAtStart: boolean;
+	defaultWindowWidth: number;
+	defaultWindowHeight: number;
 };
 
 const DEFAULT_SETTINGS: AppSettings = {
 	isMaximizedAtStart: true,
+	defaultWindowWidth: 1200,
+	defaultWindowHeight: 800,
 };
 
 function normalizeSettings(input: unknown): AppSettings {
