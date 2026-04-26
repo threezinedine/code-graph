@@ -1,11 +1,11 @@
 import "./App.scss";
+import { TopBar } from "~/features/top-bar";
+import clsx from "clsx";
 
 function App(): JSX.Element {
 	return (
-		<div className="app-frame">
-			<header className="top-bar" aria-label="Window title bar">
-				<h2 className="top-bar-title">Top Bar</h2>
-			</header>
+		<div className={clsx("app-frame")}>
+			<TopBar forwardClassName={clsx("top-bar")} />
 
 			<div className="app-shell">
 				<aside className="left-pane" aria-label="Navigation pane">

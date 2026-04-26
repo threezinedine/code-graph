@@ -5,4 +5,6 @@ export interface TopBarProps {
 	onClose?: () => void | Promise<void>;
 	onResize?: () => void | Promise<void>;
 	testId?: string;
+	forwardClassName?: string;
+	style?: React.CSSProperties;
 }

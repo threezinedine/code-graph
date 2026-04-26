@@ -11,9 +11,15 @@ export function TopBar({
 	onClose,
 	onResize,
 	testId,
+	forwardClassName,
+	style,
 }: TopBarProps) {
 	return (
-		<div className={clsx(styles.wrapper)} data-testid={testId}>
+		<div
+			className={clsx(styles.wrapper, forwardClassName)}
+			style={style}
+			data-testid={testId}
+		>
 			<div className={clsx(styles.container)}>
 				<div className={clsx(styles.left)}>Code Graph</div>
 				<div className={clsx(styles.right)}>

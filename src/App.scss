@@ -9,10 +9,16 @@
 .top-bar {
 	display: flex;
 	align-items: center;
-	padding: 0 0.9rem;
 	background: #1a2030;
 	border-bottom: 1px solid #2a3245;
 	-webkit-app-region: drag;
+
+	button,
+	a,
+	input,
+	[role="button"] {
+		-webkit-app-region: no-drag;
+	}
 }
 
 .top-bar-title {
