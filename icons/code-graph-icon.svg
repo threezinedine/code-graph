@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Code Graph app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b132b" />
+      <stop offset="100%" stop-color="#1c2541" />
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5bc0be" />
+      <stop offset="100%" stop-color="#6fffe9" />
+    </linearGradient>
+  </defs>
+
+  <rect x="24" y="24" width="464" height="464" rx="96" fill="url(#bg)" />
+
+  <g stroke="url(#line)" stroke-width="20" stroke-linecap="round" opacity="0.95" fill="none">
+    <path d="M120 162 L238 104" />
+    <path d="M120 350 L238 292" />
+    <path d="M238 104 L374 178" />
+    <path d="M238 292 L374 178" />
+    <path d="M238 104 L238 292" />
+  </g>
+
+  <g fill="#6fffe9" stroke="#0b132b" stroke-width="12">
+    <circle cx="120" cy="162" r="28" />
+    <circle cx="120" cy="350" r="28" />
+    <circle cx="238" cy="104" r="28" />
+    <circle cx="238" cy="292" r="28" />
+    <circle cx="374" cy="178" r="28" />
+  </g>
+
+  <g fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M296 316 l40 30 l-40 30" />
+    <path d="M216 377 h120" />
+  </g>
+</svg>

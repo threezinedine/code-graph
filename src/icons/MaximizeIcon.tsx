@@ -1,14 +1,8 @@
-import type { JSX, SVGProps } from "react";
-import { BOLD_ICON_STROKE_WIDTH, NORMAL_ICON_STROKE_WIDTH } from "~/constants";
+import type { JSX } from "react";
+import type { IconProps } from "./IconProps";
+import { strokeWidths } from "./IconProps";
 
-const strokeWidths = {
-	normal: NORMAL_ICON_STROKE_WIDTH,
-	bold: BOLD_ICON_STROKE_WIDTH,
-} as const;
-
-interface MaximizeIconProps extends SVGProps<SVGSVGElement> {
-	variant?: keyof typeof strokeWidths;
-}
+interface MaximizeIconProps extends IconProps {}
 
 export function MaximizeIcon({
 	variant = "normal",
