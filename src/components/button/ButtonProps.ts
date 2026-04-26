@@ -10,4 +10,5 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	onClick?: () => void | Promise<void>;
 	forwardClassName?: string;
 	style?: React.CSSProperties;
+	testId?: string;
 }
