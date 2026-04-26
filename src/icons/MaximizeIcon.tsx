@@ -1,6 +1,21 @@
 import type { JSX, SVGProps } from "react";
+import { BOLD_ICON_STROKE_WIDTH, NORMAL_ICON_STROKE_WIDTH } from "~/constants";
 
-export function MaximizeIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
+const strokeWidths = {
+	normal: NORMAL_ICON_STROKE_WIDTH,
+	bold: BOLD_ICON_STROKE_WIDTH,
+} as const;
+
+interface MaximizeIconProps extends SVGProps<SVGSVGElement> {
+	variant?: keyof typeof strokeWidths;
+}
+
+export function MaximizeIcon({
+	variant = "normal",
+	...props
+}: MaximizeIconProps): JSX.Element {
+	const strokeWidth = strokeWidths[variant];
+
 	return (
 		<svg
 			viewBox="0 0 16 16"
@@ -16,7 +31,7 @@ export function MaximizeIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
 				height="9"
 				rx="0.5"
 				stroke="currentColor"
-				strokeWidth="1.5"
+				strokeWidth={strokeWidth}
 			/>
 		</svg>
 	);

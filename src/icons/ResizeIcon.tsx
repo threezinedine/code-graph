@@ -6,14 +6,14 @@ const strokeWidths = {
 	bold: BOLD_ICON_STROKE_WIDTH,
 } as const;
 
-interface CloseIconProps extends SVGProps<SVGSVGElement> {
+interface ResizeIconProps extends SVGProps<SVGSVGElement> {
 	variant?: keyof typeof strokeWidths;
 }
 
-export function CloseIcon({
+export function ResizeIcon({
 	variant = "normal",
 	...props
-}: CloseIconProps): JSX.Element {
+}: ResizeIconProps): JSX.Element {
 	const strokeWidth = strokeWidths[variant];
 
 	return (
@@ -24,14 +24,29 @@ export function CloseIcon({
 			aria-hidden="true"
 			{...props}
 		>
-			<path
-				d="M3.5 3.5L12.5 12.5M12.5 3.5L3.5 12.5"
+			{/* back rectangle */}
+			<rect
+				x="4.5"
+				y="2.5"
+				width="8"
+				height="7"
+				rx="0.5"
 				stroke="currentColor"
 				strokeWidth={strokeWidth}
-				strokeLinecap="round"
+			/>
+			{/* front rectangle */}
+			<rect
+				x="2.5"
+				y="5.5"
+				width="8"
+				height="7"
+				rx="0.5"
+				stroke="currentColor"
+				strokeWidth={strokeWidth}
+				fill="var(--icon-bg, #1e1e1e)"
 			/>
 		</svg>
 	);
 }
 
-export default CloseIcon;
+export default ResizeIcon;
