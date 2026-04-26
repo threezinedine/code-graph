@@ -1,0 +1,49 @@
+.button {
+	--button-overlay-hover: rgba(255, 255, 255, 0.14);
+	--button-overlay-active: rgba(255, 255, 255, 0.24);
+
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: var(--button-overlay-hover);
+		opacity: 0;
+		pointer-events: none;
+		transition:
+			opacity 160ms ease-in-out,
+			background-color 120ms ease-in-out;
+	}
+
+	&:hover::after {
+		opacity: 1;
+	}
+
+	&:active::after {
+		opacity: 1;
+		background: var(--button-overlay-active);
+	}
+
+	&:disabled::after {
+		opacity: 0;
+	}
+}
+
+.topBarIcon {
+	background: none;
+	border: none;
+	padding: 0.25rem;
+	min-width: 3rem;
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
