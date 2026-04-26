@@ -43,6 +43,7 @@ function createMainWindow(
 
 	mainWindow.on("maximize", persistWindowSettings);
 	mainWindow.on("unmaximize", persistWindowSettings);
+	mainWindow.on("resize", persistWindowSettings);
 	mainWindow.webContents.on("did-finish-load", persistWindowSettings);
 
 	if (isDev) {
