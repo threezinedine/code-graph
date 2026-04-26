@@ -1,0 +1,20 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "./Button";
+
+const meta = {
+	title: "Components/Button",
+	component: Button,
+	tags: ["autodocs"],
+} satisfies Meta<typeof Button>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const TopBarIcon: Story = {
+	args: {
+		variant: "top-bar-icon",
+		children: "×",
+		style: { backgroundColor: "#da2323" },
+	},
+};
