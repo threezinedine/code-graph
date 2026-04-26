@@ -1,11 +1,62 @@
 import "./App.scss";
 import { TopBar } from "~/features/top-bar";
 import clsx from "clsx";
+import { useCallback, useEffect, useState } from "react";
 
 function App(): JSX.Element {
+	const [isMaximized, setIsMaximized] = useState(false);
+
+	useEffect(() => {
+		if (!window.electronAPI) {
+			return;
+		}
+
+		window.electronAPI
+			.getWindowState()
+			.then((state) => {
+				setIsMaximized(state.isMaximized);
+			})
+			.catch(() => {
+				setIsMaximized(false);
+			});
+
+		const unsubscribe = window.electronAPI.onWindowMaximizedChanged(
+			(nextIsMaximized) => {
+				setIsMaximized(nextIsMaximized);
+			},
+		);
+
+		return () => {
+			unsubscribe();
+		};
+	}, []);
+
+	const handleMinimize = useCallback(() => {
+		void window.electronAPI?.minimizeWindow();
+	}, []);
+
+	const handleMaximize = useCallback(() => {
+		void window.electronAPI?.maximizeWindow();
+	}, []);
+
+	const handleResize = useCallback(() => {
+		void window.electronAPI?.resizeWindow();
+	}, []);
+
+	const handleClose = useCallback(() => {
+		void window.electronAPI?.closeWindow();
+	}, []);
+
 	return (
 		<div className={clsx("app-frame")}>
-			<TopBar forwardClassName={clsx("top-bar")} />
+			<TopBar
+				forwardClassName={clsx("top-bar")}
+				isMaximized={isMaximized}
+				onMinimize={handleMinimize}
+				onMaximize={handleMaximize}
+				onResize={handleResize}
+				onClose={handleClose}
+			/>
 
 			<div className="app-shell">
 				<aside className="left-pane" aria-label="Navigation pane">
