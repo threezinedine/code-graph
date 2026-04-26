@@ -26,6 +26,14 @@ function normalizeSettings(input: unknown): AppSettings {
 			typeof raw.isMaximizedAtStart === "boolean"
 				? raw.isMaximizedAtStart
 				: DEFAULT_SETTINGS.isMaximizedAtStart,
+		defaultWindowWidth:
+			typeof raw.defaultWindowWidth === "number"
+				? raw.defaultWindowWidth
+				: DEFAULT_SETTINGS.defaultWindowWidth,
+		defaultWindowHeight:
+			typeof raw.defaultWindowHeight === "number"
+				? raw.defaultWindowHeight
+				: DEFAULT_SETTINGS.defaultWindowHeight,
 	};
 }
 

@@ -4,6 +4,11 @@ import { AppDataManager, type AppData, type AppSettings } from "./settings";
 
 const isDev = Boolean(process.env.VITE_DEV_SERVER_URL);
 
+function getWindowIconPath(): string {
+	const iconFile = process.platform === "win32" ? "icon.ico" : "icon.png";
+	return path.join(__dirname, "../icons", iconFile);
+}
+
 function getWindowFromEvent(
 	event: Electron.IpcMainInvokeEvent,
 ): BrowserWindow | null {
@@ -17,6 +22,7 @@ function createMainWindow(
 	const mainWindow = new BrowserWindow({
 		width: initialSettings.defaultWindowWidth,
 		height: initialSettings.defaultWindowHeight,
+		icon: getWindowIconPath(),
 		frame: false,
 		autoHideMenuBar: true,
 		webPreferences: {

@@ -54,3 +54,4 @@ Thumbs.db
 out/
 test-results/
 storybook-static/
+release/
