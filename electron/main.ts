@@ -1,6 +1,6 @@
 import path from "node:path";
 import { app, BrowserWindow, ipcMain } from "electron";
-import { loadAppSettings, saveAppSettings, type AppSettings } from "./settings";
+import { AppDataManager, type AppData, type AppSettings } from "./settings";
 
 const isDev = Boolean(process.env.VITE_DEV_SERVER_URL);
 
@@ -10,7 +10,10 @@ function getWindowFromEvent(
 	return BrowserWindow.fromWebContents(event.sender);
 }
 
-function createMainWindow(initialSettings: AppSettings): BrowserWindow {
+function createMainWindow(
+	initialSettings: AppSettings,
+	baseSettings: AppData,
+): BrowserWindow {
 	const mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 800,
@@ -23,16 +26,16 @@ function createMainWindow(initialSettings: AppSettings): BrowserWindow {
 		},
 	});
 
-	if (initialSettings.isMaximized) {
+	if (initialSettings.isMaximizedAtStart) {
 		mainWindow.maximize();
 	}
 
 	const persistWindowSettings = (): void => {
 		const isMaximized = mainWindow.isMaximized();
 
-		saveAppSettings({
+		baseSettings.save({
 			...initialSettings,
-			isMaximized,
+			isMaximizedAtStart: isMaximized,
 		});
 
 		mainWindow.webContents.send("window:maximized-changed", isMaximized);
@@ -85,12 +88,14 @@ ipcMain.handle("window:get-state", (event) => {
 });
 
 app.whenReady().then(() => {
-	const settings = loadAppSettings();
-	createMainWindow(settings);
+	const manager = AppDataManager.initialize();
+	const base = manager.getDefaultAppData();
+	const settings = manager.load();
+	createMainWindow(settings, base);
 
 	app.on("activate", () => {
 		if (BrowserWindow.getAllWindows().length === 0) {
-			createMainWindow(loadAppSettings());
+			createMainWindow(manager.load(), base);
 		}
 	});
 });
